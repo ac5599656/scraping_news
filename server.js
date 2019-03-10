@@ -170,6 +170,7 @@ app.put("/saved/:id", function(req, res) {
 });
 
 app.post("/article/:id", function(req, res) {
+  console.log(req.body);
   db.Comment.create(req.body)
     .then(function(dbComment) {
       return db.Article.findByIdAndUpdate(
@@ -177,7 +178,7 @@ app.post("/article/:id", function(req, res) {
           _id: req.params.id
         },
         {
-          note: dbComment._id
+          comment: dbComment._id
         },
         {
           new: true
@@ -195,9 +196,12 @@ app.post("/article/:id", function(req, res) {
 
 // route to find a note by ID
 app.get("/article/:id", function(req, res) {
+  console.log("You hit the right route");
+
   db.Article.findOne({ _id: req.params.id })
     .populate("comment")
     .then(function(dbArticle) {
+      console.log("this is what we are looking for", dbArticle.comment.body);
       res.json(dbArticle);
     })
     .catch(function(err) {
