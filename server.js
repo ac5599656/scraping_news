@@ -7,7 +7,7 @@ let path = require("path");
 // Set Handlebars.
 let exphbs = require("express-handlebars");
 
-let PORT = 3000;
+// let PORT = 3000;
 
 // Initialize Express
 let app = express();
@@ -289,6 +289,6 @@ app.delete("/article/:id", function(req, res) {
 //     });
 // });
 
-app.listen(PORT, function() {
-  console.log("App running on port " + PORT + "!");
+app.listen(process.env.PORT || 3000, function() {
+  // console.log("App running on port " + PORT + "!");
 });

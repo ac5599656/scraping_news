@@ -1,8 +1,17 @@
 {
   "name": "scraping_news",
   "version": "1.0.0",
-  "description": "",
+  "description": "Provide recent tech news",
   "main": "server.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.18",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -11,18 +20,10 @@
     "type": "git",
     "url": "git+https://github.com/ac5599656/scraping_news.git"
   },
-  "author": "",
+  "author": "Anne Chen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ac5599656/scraping_news/issues"
   },
-  "homepage": "https://github.com/ac5599656/scraping_news#readme",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "cheerio": "^1.0.0-rc.2",
-    "express": "^4.16.4",
-    "express-handlebars": "^3.0.2",
-    "mongoose": "^5.4.18",
-    "morgan": "^1.9.1"
-  }
+  "homepage": "https://github.com/ac5599656/scraping_news#readme"
 }
