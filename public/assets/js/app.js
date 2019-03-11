@@ -35,12 +35,13 @@ $(document).on("click", ".unsave-btn", function(event) {
 });
 // generate the text inside the notes modal
 function createModalHTML(data) {
+  console.log(data);
   $("#note-modal-title").text("Notes for article: " + data.title);
   let noteItem;
   let noteDeleteBtn;
 
-  if (data.comment.body) {
-    console.log("data notes length ", data.comment.body.length);
+  if (data.comment) {
+    console.log("data notes length ", data.comment);
 
     // noteItem = $("<li>").text(data.comment.body);
     // noteItem.addClass("note-item-list");
@@ -93,7 +94,9 @@ $(document).on("click", ".note-save-btn", function(event) {
     $("#add-note-modal").toggle();
   });
 });
-
+$(document).on("click", ".cancel", function(event) {
+  $("#add-note-modal").toggle();
+});
 // delete the note that was clicked and remove the whole <li> because the text and delete button are included
 // $(document).on("click", ".delete-note-modal", function(event) {
 //   var noteID = $(this).attr("data-noteId");
