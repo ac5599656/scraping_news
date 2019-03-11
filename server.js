@@ -27,9 +27,7 @@ app.use(express.json());
 let MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true
-});
+mongoose.connect(MONGODB_URI);
 
 // serve the public directory
 app.use(express.static("public"));
@@ -48,13 +46,13 @@ var db = require("./models");
 // Routes
 
 // Make an empty array for saving our scraped info
-let results = [];
 
 // Make request via axios to grab the HTML from `awwards's` clean website section
 app.get("/scrape", function(req, res) {
   axios.get("https://www.gadgetsnow.com/tech-news").then(function(response) {
     // Load the HTML into cheerio
     let $ = cheerio.load(response.data);
+    let results = [];
     $("ul.cvs_wdt li").each(function(i, element) {
       /* Cheerio's find method will "find" the first matching child element in a parent.
        *    We start at the current element, then "find" its first child a-tag.
