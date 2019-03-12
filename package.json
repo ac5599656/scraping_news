@@ -1,5 +1,5 @@
 {
-  "name": "scraping_news_app",
+  "name": "scraping_news",
   "version": "1.0.0",
   "description": "## Overview",
   "main": "server.js",

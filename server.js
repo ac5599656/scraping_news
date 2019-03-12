@@ -42,6 +42,16 @@ app.engine(
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 // Connect to the Mongo DB
+let mongConnection = mongoose.connection;
+
+mongConnection.on("error", err =>
+  console.log("There was an error connecting to mongo")
+);
+
+mongConnection.on("open", () =>
+  console.log("Mongo has successfully connected")
+);
+
 var db = require("./models");
 // Routes
 
@@ -289,4 +299,5 @@ app.delete("/article/:id", function(req, res) {
 
 app.listen(process.env.PORT || 3000, function() {
   // console.log("App running on port " + PORT + "!");
+  console.log("RUNNING SERVER");
 });
