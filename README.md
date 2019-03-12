@@ -4,7 +4,7 @@
 
 Scraping News app provides the most recent technology news. This app allows users to save their favorite article and comment about it.
 
-To see a live demo, Please click [here](https://limitless-basin-10585.herokuapp.com/).
+To see a live demo, Please click [here](https://radiant-hamlet-95717.herokuapp.com/).
 
 ## Authors
 
