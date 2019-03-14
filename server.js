@@ -79,6 +79,16 @@ app.get("/scrape", function(req, res) {
         .find("span.w_tle")
         .children("a")
         .attr("href");
+
+      if (!link.includes("https")) {
+        link =
+          "https://www.gadgetsnow.com" +
+          $(element)
+            .find("span.w_tle")
+            .children("a")
+            .attr("href");
+      }
+
       let summary = $(element)
         .find("span.w_desc")
         .text();
@@ -93,7 +103,7 @@ app.get("/scrape", function(req, res) {
       })
         .then(function(dbArticle) {
           // View the added result in the console
-          console.log(dbArticle);
+          // console.log(dbArticle);
         })
         .catch(function(err) {
           // If an error occurred, log it
@@ -178,7 +188,7 @@ app.put("/saved/:id", function(req, res) {
 });
 
 app.post("/article/:id", function(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   db.Comment.create(req.body)
     .then(function(dbComment) {
       return db.Article.findByIdAndUpdate(
@@ -204,7 +214,7 @@ app.post("/article/:id", function(req, res) {
 
 // route to find a note by ID
 app.get("/article/:id", function(req, res) {
-  console.log("You hit the right route");
+  // console.log("You hit the right route");
 
   db.Article.findOne({ _id: req.params.id })
     .populate("comment")
